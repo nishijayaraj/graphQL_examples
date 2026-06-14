@@ -1,0 +1,54 @@
+[{
+  "_id": "ORD1001",
+  "customerId": "CUST001",
+  "orderDate": "2026-05-01T12:00:00Z",
+  "status": "DELIVERED",
+  "totalAmount": 1250.5,
+  "currency": "INR",
+  "items": [
+    {
+      "productId": "PROD101",
+      "productName": "Laptop Bag",
+      "quantity": 1,
+      "unitPrice": 950.5
+    },
+    {
+      "productId": "PROD102",
+      "productName": "Wireless Mouse",
+      "quantity": 1,
+      "unitPrice": 300
+    }
+  ]
+},
+{
+  "_id": "ORD1002",
+  "customerId": "CUST002",
+  "orderDate": "2026-05-05T09:30:00Z",
+  "status": "SHIPPED",
+  "totalAmount": 799,
+  "currency": "INR",
+  "items": [
+    {
+      "productId": "PROD103",
+      "productName": "Mechanical Keyboard",
+      "quantity": 1,
+      "unitPrice": 799
+    }
+  ]
+},
+{
+  "_id": "ORD1003",
+  "customerId": "CUST001",
+  "orderDate": "2026-05-10T14:15:00Z",
+  "status": "PROCESSING",
+  "totalAmount": 150,
+  "currency": "INR",
+  "items": [
+    {
+      "productId": "PROD104",
+      "productName": "USB Cable",
+      "quantity": 3,
+      "unitPrice": 50
+    }
+  ]
+}]

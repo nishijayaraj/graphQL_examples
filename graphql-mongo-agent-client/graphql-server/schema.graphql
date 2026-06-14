@@ -1,0 +1,148 @@
+scalar DateTime
+
+type Address {
+  street: String
+  city: String
+  state: String
+  country: String
+  postalCode: String
+}
+
+type OrderItem {
+  productId: ID!
+  productName: String!
+  quantity: Int!
+  unitPrice: Float!
+}
+
+type Query {
+  customer(id: ID!): Customer
+
+  customers: [Customer!]!
+
+  order(id: ID!): Order
+
+  orders(offset: Int, limit: Int): OrderPage!
+}
+
+type Mutation {
+  createCustomer(input: CreateCustomerInput!): Customer!
+
+  updateCustomer(id: ID!, input: UpdateCustomerInput!): Customer!
+
+  deleteCustomer(id: ID!): Boolean!
+
+  createOrder(input: CreateOrderInput!): Order!
+
+  updateOrder(id: ID!, input: UpdateOrderInput!): Order!
+
+  deleteOrder(id: ID!): Boolean!
+}
+
+type Customer {
+  _id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phone: String
+  status: String
+  address: Address
+  createdAt: DateTime
+
+  orders: [Order!]!
+}
+
+type CustomerPage {
+  items: [Customer!]!
+  total: Int!
+  offset: Int!
+  limit: Int!
+}
+
+type Order {
+  _id: ID!
+
+  customerId: ID!
+
+  customer: Customer!
+
+  orderNumber: String!
+
+  orderDate: DateTime!
+
+  total: Float!
+
+  status: String!
+
+  items: [OrderItem!]!
+
+  createdAt: DateTime
+}
+
+type OrderPage {
+  items: [Order!]!
+  total: Int!
+  offset: Int!
+  limit: Int!
+}
+
+input CreateCustomerInput {
+  _id: ID!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phone: String
+  status: String
+  address: AddressInput
+  createdAt: DateTime
+}
+
+input AddressInput {
+  street: String
+  city: String
+  state: String
+  country: String
+  postalCode: String
+}
+
+input UpdateCustomerInput {
+  firstName: String
+  lastName: String
+  email: String
+  phone: String
+  status: String
+  address: AddressInput
+}
+
+input OrderItemInput {
+  productId: ID!
+  productName: String!
+  quantity: Int!
+  unitPrice: Float!
+}
+
+input CreateOrderInput {
+  customerId: ID!
+
+  orderNumber: String!
+
+  orderDate: DateTime!
+
+  total: Float!
+
+  status: String
+
+  items: [OrderItemInput!]!
+}
+
+input UpdateOrderInput {
+  orderNumber: String
+
+  orderDate: DateTime
+
+  total: Float
+
+  status: String
+
+  items: [OrderItemInput!]
+}
